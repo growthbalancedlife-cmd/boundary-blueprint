@@ -1,0 +1,40 @@
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Georgia',serif;background:#faf9f7;color:#1e1e1c;line-height:1.7}
+a{text-decoration:none;color:inherit}
+.container{width:min(1100px,92%);margin:0 auto}
+.narrow{width:min(760px,92%);margin:0 auto}
+.center{text-align:center}
+.nav{position:sticky;top:0;z-index:100;background:rgba(250,249,247,0.96);border-bottom:1px solid #e4e0d8;padding:1rem 2rem}
+.nav-inner{width:min(1100px,92%);margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:1rem;font-weight:700;color:#2e4a3a;letter-spacing:0.03em}
+.nav nav{display:flex;gap:1.5rem;align-items:center}
+.nav nav a{font-size:0.9rem;color:#666}
+.nav nav a:hover{color:#1e1e1c}
+.btn-nav{background:#2e4a3a;color:#faf9f7 !important;padding:0.45rem 1.2rem;border-radius:4px;font-family:Arial,sans-serif;font-size:0.85rem}
+.hero{min-height:85vh;display:flex;align-items:center;padding:5rem 2rem;background:linear-gradient(160deg,#faf9f7,#eaf0ec)}
+.hero-inner{max-width:780px;margin:0 auto;text-align:center}
+.eyebrow{font-family:Arial,sans-serif;font-size:0.78rem;letter-spacing:0.2em;text-transform:uppercase;color:#2e4a3a;margin-bottom:1rem}
+.hero h1{font-size:clamp(2.4rem,5.5vw,4.5rem);line-height:1.1;margin-bottom:1.5rem}
+.subhead{font-size:1.1rem;color:#555;max-width:620px;margin:0 auto 2.5rem}
+.btn-primary{display:inline-block;background:#2e4a3a;color:#faf9f7;padding:0.9rem 2.2rem;border-radius:4px;font-family:Arial,sans-serif;font-weight:bold;transition:opacity 0.2s}
+.btn-primary:hover{opacity:0.85}
+.btn-primary.big{font-size:1.05rem;padding:1.1rem 2.8rem;margin-top:1.5rem}
+.section{padding:5rem 2rem}
+.alt{background:#edf2ee}
+.section h2{font-size:2rem;margin-bottom:1rem}
+.section p{color:#4a4a48;margin-bottom:0.75rem}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin-top:2rem}
+.feature{background:#faf9f7;border:1px solid #dde6df;border-radius:8px;padding:1.75rem;display:flex;flex-direction:column;gap:0.5rem}
+.num{font-size:2rem;font-weight:900;color:#c8ddc9;font-family:Arial,sans-serif}
+.feature h3{font-size:1.05rem;color:#1e1e1c}
+.feature p{font-size:0.88rem;color:#666}
+.note{font-size:0.8rem;color:#aaa;font-family:Arial,sans-serif;margin-top:10px}
+.faq details{border-bottom:1px solid #d4dbd6;padding:1.2rem 0}
+.faq summary{cursor:pointer;color:#1e1e1c;list-style:none;display:flex;justify-content:space-between;font-size:0.97rem}
+.faq summary::after{content:'+';color:#2e4a3a;font-size:1.2rem}
+.faq details[open] summary::after{content:'−'}
+.faq details p{margin-top:0.75rem;color:#555;font-size:0.9rem}
+.footer{background:#1e1e1c;color:#c8c4bc;padding:2.5rem 2rem;text-align:center}
+.footer p{font-size:0.85rem;margin-bottom:0.5rem}
+.footer a{color:#8db89a}
