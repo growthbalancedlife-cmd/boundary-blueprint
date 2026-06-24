@@ -1,0 +1,1774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Boundary Blueprint Interactive Workbook · Vision:MB</title>
+  <meta name="description" content="Interactive companion workspace for The Boundary Blueprint guide, featuring advanced somatic metrics calibration, real-time input history tracking, and adaptive dual-perspective modules.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* --- Vision:MB Warm Minimalist Variable Adaptive Engine --- */
+    :root {
+      --bg-base: #FBFBF9;
+      --bg-surface: #FFFFFF;
+      --bg-muted: #F5F4F0;
+      --text-main: #2A2A28;
+      --text-muted: #6E6D6A;
+      --accent-stone: #8E8D8A;
+      --accent-warm: #D4A373;
+      --accent-sage: #9A9B86;
+      --accent-terracotta: #D1A68F;
+      --border-color: #E6E5E0;
+      --radius: 12px;
+      --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      --font-stack: 'Inter', system-ui, -apple-system, sans-serif;
+      --shadow-sm: 0 2px 8px rgba(42, 42, 40, 0.04);
+      --shadow-md: 0 8px 24px rgba(42, 42, 40, 0.06);
+    }
+
+    [data-theme="dark"] {
+      --bg-base: #141413;
+      --bg-surface: #1C1C1A;
+      --bg-muted: #242422;
+      --text-main: #F5F4F0;
+      --text-muted: #9E9D9A;
+      --accent-stone: #8E8D8A;
+      --accent-warm: #E5BA8E;
+      --accent-sage: #A9AA95;
+      --accent-terracotta: #E0BCAB;
+      --border-color: #2E2E2B;
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      font-family: var(--font-stack);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* --- Universal Layout Alignment Header --- */
+    .site-header {
+      background: rgba(251, 251, 249, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+    [data-theme="dark"] .site-header {
+      background: rgba(20, 20, 19, 0.85);
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 80px;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--text-main);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    /* --- Anti-Crowding Dropdown Menu Interface Architecture --- */
+    .menu-container {
+      position: relative;
+    }
+
+    .menu-trigger {
+      background-color: var(--bg-muted);
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+      padding: 0.625rem 1.25rem;
+      border-radius: var(--radius);
+      font-weight: 500;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: var(--transition);
+    }
+
+    .menu-trigger:hover {
+      background-color: var(--border-color);
+    }
+
+    .dropdown-panel {
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      width: 340px;
+      max-height: 480px;
+      overflow-y: auto;
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+      padding: 1rem;
+      display: none;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      z-index: 1100;
+    }
+
+    .dropdown-panel.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .dropdown-group-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent-sage);
+      margin: 1rem 0 0.5rem 0.5rem;
+      font-weight: 700;
+    }
+    .dropdown-group-title:first-child { margin-top: 0; }
+
+    .dropdown-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.625rem 0.75rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      border-radius: calc(var(--radius) - 4px);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .dropdown-item:hover, .dropdown-item.active {
+      background-color: var(--bg-muted);
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    .dropdown-item .icon {
+      opacity: 0.7;
+      width: 16px;
+      text-align: center;
+    }
+
+    /* --- Theme Toggle Switch Layout --- */
+    .theme-toggle {
+      background: none;
+      border: none;
+      color: var(--text-main);
+      cursor: pointer;
+      padding: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      border-radius: 50%;
+      background-color: var(--bg-muted);
+      width: 40px;
+      height: 40px;
+      transition: var(--transition);
+    }
+    .theme-toggle:hover {
+      background-color: var(--border-color);
+    }
+
+    /* --- System Companion Hub Layout Banner --- */
+    .bb-companion-banner {
+      background-color: var(--bg-muted);
+      padding: 3.5rem 0;
+      border-bottom: 1px solid var(--border-color);
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .bb-companion-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    @media (max-width: 768px) {
+      .bb-companion-inner { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    .companion-eyebrow {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent-sage);
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .companion-links {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+    }
+
+    .companion-links a {
+      color: var(--text-main);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      transition: var(--transition);
+    }
+
+    .companion-links a:hover {
+      color: var(--accent-warm);
+    }
+
+    .bb-companion-graphic img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* --- Main Workspace Architecture Framework --- */
+    #workspace {
+      padding: 4rem 0 8rem 0;
+    }
+
+    .content-section {
+      display: none;
+      animation: sectionFadeIn 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    @keyframes sectionFadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* --- Premium Content Typography System --- */
+    .chapter-header {
+      margin-bottom: 3.5rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .chapter-meta {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent-sage);
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    h1 {
+      font-size: 2.25rem;
+      font-weight: 600;
+      line-height: 1.25;
+      color: var(--text-main);
+      letter-spacing: -0.02em;
+    }
+
+    h2.section-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin: 3.5rem 0 1.5rem 0;
+    }
+
+    p {
+      font-size: 1.05rem;
+      margin-bottom: 1.5rem;
+      color: var(--text-main);
+      opacity: 0.9;
+    }
+
+    .quote-block {
+      font-style: italic;
+      padding: 1.5rem 2rem;
+      background-color: var(--bg-muted);
+      border-left: 3px solid var(--accent-terracotta);
+      margin: 2.5rem 0;
+      border-radius: 4px;
+      font-size: 1.1rem;
+      color: var(--text-main);
+    }
+
+    /* --- Interactive Spatial Control Enclosures --- */
+    .interactive-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      margin: 3rem 0;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .interactive-card:focus-within {
+      border-color: var(--accent-sage);
+      box-shadow: var(--shadow-md);
+    }
+
+    .card-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent-stone);
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Adaptive Context Badge Indicators */
+    .interactive-card::after {
+      position: absolute;
+      top: 1.5rem;
+      right: 2.5rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 600;
+      color: var(--accent-stone);
+      opacity: 0.7;
+    }
+    #sect-ch1 .interactive-card::after { content: "Observation Track"; }
+    #sect-ch2 .interactive-card::after { content: "Compass Sync"; }
+    #sect-ch5 .interactive-card::after { content: "Ecosystem Data"; }
+    #sect-ch6 .interactive-card::after { content: "Synthesis Model"; }
+
+    .input-group {
+      margin-bottom: 1.75rem;
+    }
+
+    .input-label {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+      color: var(--text-main);
+    }
+
+    textarea, select, input[type="text"] {
+      width: 100%;
+      padding: 1rem;
+      border: 1px solid var(--border-color);
+      border-radius: calc(var(--radius) - 4px);
+      background-color: var(--bg-muted);
+      font-family: var(--font-stack);
+      font-size: 1rem;
+      color: var(--text-main);
+      outline: none;
+      resize: vertical;
+      transition: var(--transition);
+    }
+
+    textarea:focus, select:focus, input[type="text"]:focus {
+      border-color: var(--accent-stone);
+      background-color: var(--bg-surface);
+    }
+
+    /* --- Action Configuration Button Arrays --- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--text-main);
+      color: var(--bg-base);
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-family: var(--font-stack);
+      font-size: 0.9rem;
+      font-weight: 500;
+      border-radius: calc(var(--radius) - 4px);
+      cursor: pointer;
+      transition: var(--transition);
+      gap: 0.5rem;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--bg-muted);
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .autosave-status {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--accent-sage);
+      margin-top: 0.75rem;
+      text-align: right;
+      opacity: 0.8;
+      font-style: italic;
+    }
+
+    .bb-step-action {
+      background-color: var(--bg-muted);
+      padding: 2rem;
+      border-radius: var(--radius);
+      border-left: 4px solid var(--accent-stone);
+    }
+
+    /* --- Metrics Dashboard Architecture --- */
+    .cover-wrapper {
+      text-align: center;
+      padding: 2rem 0 4rem;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .cover-line {
+      width: 60px;
+      height: 2px;
+      background-color: var(--accent-warm);
+      margin: 0 auto 2rem auto;
+    }
+
+    .cover-title {
+      font-size: 2.75rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .cover-subtitle {
+      font-size: 1.35rem;
+      color: var(--accent-terracotta);
+      margin-bottom: 1.5rem;
+    }
+
+    .cover-tagline {
+      font-size: 1rem;
+      color: var(--text-muted);
+    }
+
+    .dashboard-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .stat-card {
+      background: var(--bg-surface);
+      padding: 2rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-color);
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .stat-val {
+      font-size: 2.25rem;
+      color: var(--accent-sage);
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .stat-lbl {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+
+    /* --- History Log Enclosures --- */
+    .history-log {
+      margin-top: 2rem;
+      border-top: 1px dashed var(--border-color);
+      padding-top: 1.5rem;
+    }
+
+    .history-title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent-terracotta);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .history-item {
+      background-color: var(--bg-muted);
+      padding: 1.25rem;
+      border-radius: calc(var(--radius) - 4px);
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+      border-left: 3px solid var(--accent-sage);
+    }
+
+    .history-date {
+      font-size: 0.775rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    /* --- Matrix Tables & Complex Layout Traces --- */
+    .premium-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin: 2.5rem 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+
+    .premium-table th {
+      background-color: var(--bg-muted);
+      padding: 1.25rem;
+      font-weight: 600;
+      text-align: left;
+      font-size: 0.9rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .premium-table td {
+      padding: 1.25rem;
+      background-color: var(--bg-surface);
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.95rem;
+    }
+    .premium-table tr:last-child td { border-bottom: none; }
+
+    .radar-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    @media (max-width: 768px) {
+      .radar-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    .radar-sliders {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .slider-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--bg-muted);
+      padding: 1rem;
+      border-radius: calc(var(--radius) - 4px);
+    }
+
+    .slider-label {
+      font-size: 0.9rem;
+      font-weight: 500;
+      width: 90px;
+    }
+
+    .slider-row input[type="range"] {
+      flex: 1;
+      margin: 0 1rem;
+      accent-color: var(--accent-sage);
+    }
+
+    .slider-value {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--accent-terracotta);
+      width: 20px;
+      text-align: right;
+    }
+
+    /* Vector Vector Graphics Adaptive Inversion */
+    svg {
+      max-width: 100%;
+      height: auto;
+    }
+    svg text {
+      fill: var(--text-main) !important;
+    }
+    svg line, svg circle:not([fill]), svg polygon:not([fill]), svg path:not([fill]) {
+      stroke: var(--text-main) !important;
+    }
+
+    /* --- Notification System --- */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background-color: var(--text-main);
+      color: var(--bg-base);
+      padding: 1rem 2rem;
+      border-radius: var(--radius);
+      font-size: 0.9rem;
+      box-shadow: var(--shadow-md);
+      opacity: 0;
+      transform: translateY(12px);
+      transition: var(--transition);
+      z-index: 2000;
+      pointer-events: none;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* --- Shared Footer Architecture --- */
+    .bb-footer {
+      background-color: var(--bg-muted);
+      padding: 4.5rem 0;
+      border-top: 1px solid var(--border-color);
+      transition: background-color 0.3s ease, border-top-color 0.3s ease;
+    }
+
+    .bb-footer-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 2rem;
+    }
+
+    .bb-footer-graphic img {
+      height: 32px;
+      opacity: 0.5;
+    }
+
+    .bb-footer-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      max-width: 640px;
+      line-height: 1.7;
+    }
+
+    .bb-footer-text a {
+      color: var(--text-main);
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent-stone);
+      transition: var(--transition);
+    }
+
+    .bb-footer-text a:hover {
+      color: var(--accent-warm);
+      border-color: var(--accent-warm);
+    }
+
+    #print-sandbox {
+      display: none;
+    }
+
+    /* --- Advanced Printing Isolations --- */
+    @media print {
+      body { background-color: #FFF !important; color: #000 !important; font-size: 12pt; }
+      .site-header, .bb-companion-banner, .btn, .btn-group, .toast, .autosave-status, .menu-container, .theme-toggle { display: none !important; }
+      #workspace { padding: 0 !important; }
+      .content-section { display: none !important; }
+      #print-sandbox { display: block !important; width: 100% !important; }
+      .interactive-card { background: #FFF !important; border: 1px solid #2A2A28 !important; box-shadow: none !important; page-break-inside: avoid; }
+      .history-item { background: #FFF !important; border: 1px solid #DDD !important; border-left: 4px solid #2A2A28 !important; page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="https://visionmb612.com" class="logo">Vision:MB</a>
+      <div class="header-actions">
+        <div class="menu-container">
+          <button class="menu-trigger" id="dropdownTrigger" onclick="toggleChaptersMenu()">
+            🕮 Workbook Chapters <span style="font-size: 0.75rem;">▼</span>
+          </button>
+          <nav class="dropdown-panel" id="dropdownPanel">
+            <div class="dropdown-item active" data-target="dashboard" onclick="switchSection('dashboard')">
+              <span class="icon">⌂</span> Progress Dashboard
+            </div>
+            <div class="dropdown-item" data-target="intro" onclick="switchSection('intro')">
+              <span class="icon">🕮</span> Introduction Overview
+            </div>
+
+            <div class="dropdown-group-title">Part I: Awareness</div>
+            <div class="dropdown-item" data-target="ch1" onclick="switchSection('ch1')">
+              <span class="icon">Ⅰ</span> Chapter 1: Roots of Hardship
+            </div>
+            <div class="dropdown-item" data-target="ch2" onclick="switchSection('ch2')">
+              <span class="icon">Ⅱ</span> Chapter 2: Somatic Compass
+            </div>
+            <div class="dropdown-item" data-target="ch3" onclick="switchSection('ch3')">
+              <span class="icon">Ⅲ</span> Chapter 3: Five Dimensions
+            </div>
+
+            <div class="dropdown-group-title">Part II: Structure</div>
+            <div class="dropdown-item" data-target="ch4" onclick="switchSection('ch4')">
+              <span class="icon">Ⅳ</span> Chapter 4: The Boundary System
+            </div>
+            <div class="dropdown-item" data-target="ch5" onclick="switchSection('ch5')">
+              <span class="icon">Ⅴ</span> Chapter 5: Somatic Audit
+            </div>
+            <div class="dropdown-item" data-target="ch6" onclick="switchSection('ch6')">
+              <span class="icon">Ⅵ</span> Chapter 6: Boundary Ladder
+            </div>
+
+            <div class="dropdown-group-title">Part III: Practice</div>
+            <div class="dropdown-item" data-target="ch7" onclick="switchSection('ch7')">
+              <span class="icon">Ⅶ</span> Chapter 7: Regulated Voice
+            </div>
+            <div class="dropdown-item" data-target="ch8" onclick="switchSection('ch8')">
+              <span class="icon">Ⅷ</span> Chapter 8: Real-Time Execution
+            </div>
+            <div class="dropdown-item" data-target="ch9" onclick="switchSection('ch9')">
+              <span class="icon">Ⅸ</span> Chapter 9: Handling Pushback
+            </div>
+
+            <div class="dropdown-group-title">Part IV: Transmission</div>
+            <div class="dropdown-item" data-target="ch10" onclick="switchSection('ch10')">
+              <span class="icon">Ⅹ</span> Chapter 10: Modeling Systems
+            </div>
+            <div class="dropdown-item" data-target="ch11" onclick="switchSection('ch11')">
+              <span class="icon">Ⅺ</span> Chapter 11: Guided Teaching
+            </div>
+            <div class="dropdown-item" data-target="ch12" onclick="switchSection('ch12')">
+              <span class="icon">Ⅻ</span> Chapter 12: Relational Culture
+            </div>
+            <div class="dropdown-item" data-target="ch13" onclick="switchSection('ch13')">
+              <span class="icon">📜</span> Chapter 13: The Somatic Oath
+            </div>
+          </nav>
+        </div>
+
+        <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle visual palette theme">🌓</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="bb-companion-banner">
+      <div class="container bb-companion-inner">
+        <div class="bb-companion-text">
+          <p class="companion-eyebrow">The Boundary Blueprint System Workspace</p>
+          <p class="companion-links">
+            Looking for the full Boundary Blueprint PDF guide?
+            <a href="https://growthbalancedlife-cmd.github.io/boundary-blueprint-landing/" target="_blank" rel="noopener">
+              Visit the landing page
+            </a>
+            or
+            <a href="https://learnerguide.gumroad.com/l/boundaryblueprint" target="_blank" rel="noopener">
+              purchase the guide on Gumroad
+            </a>.
+          </p>
+        </div>
+        <div class="bb-companion-graphic">
+          <img src="bb-workbook-banner.png" alt="Workbook banner graphic with boundary decision map">
+        </div>
+      </div>
+    </section>
+
+    <div class="container" id="workspace">
+      <div id="toast" class="toast">Reflections safely preserved to blueprint storage</div>
+      <div id="print-sandbox"></div>
+
+      <section id="sect-dashboard" class="content-section active">
+        <div class="cover-wrapper">
+          <div class="cover-line"></div>
+          <h1 class="cover-title">THE BOUNDARY BLUEPRINT</h1>
+          <div class="cover-subtitle">Protect Your Peace Without Guilt</div>
+          <div class="cover-tagline">An Interactive Somatic Systems Workspace by Monty Blaylark</div>
+        </div>
+
+        <div class="chapter-header" style="border-bottom: none; margin-bottom: 20px;">
+          <h2 class="section-title" style="margin: 0;">Your Transformation Dashboard</h2>
+          <div class="btn-group">
+            <button class="btn" onclick="printEntireDataRecord()">🖨️ Print Full Stored Blueprint</button>
+          </div>
+        </div>
+        <p>Welcome back to your adaptive system container. As you explore the somatic principles within each chapter, your inputs, assessments, and custom-built validation scripts will persist dynamically below to track changes in your relational patterns.</p>
+
+        <div class="dashboard-stats">
+          <div class="stat-card">
+            <div id="stat-reflections" class="stat-val">0</div>
+            <div class="stat-lbl">Saved Logs</div>
+          </div>
+          <div class="stat-card">
+            <div id="stat-radar" class="stat-val">Not Set</div>
+            <div class="stat-lbl">Latest Radar Mean</div>
+          </div>
+          <div class="stat-card">
+            <div id="stat-oath" class="stat-val">No</div>
+            <div class="stat-lbl">Oath Attained</div>
+          </div>
+        </div>
+
+        <div class="interactive-card">
+          <div class="card-label">Master Systematic Blueprint Historical Log Trace</div>
+          <div id="dashboard-history-root">
+            <p style="font-style: italic; opacity: 0.6; text-align: center;">No stored habit logs or somatic input profiles located yet. Begin processing the reading tabs using the dropdown selector menu.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="sect-intro" class="content-section">
+        <div class="chapter-header">
+          <div>
+            <div class="chapter-meta">Orientation Blueprint</div>
+            <h1>Introduction: The Moment You Stop Abandoning Yourself</h1>
+          </div>
+          <button class="btn btn-secondary" onclick="printTargetSection('sect-intro', 'Introduction Orientation Summary')">🖨️ Print Section</button>
+        </div>
+        <p>Most people don't struggle with boundaries because they're weak, passive, or indecisive. They struggle because their nervous system was trained to survive through self-abandonment.</p>
+        <div class="quote-block">
+          "If I say no, I lose connection."<br>
+          "If I speak up, I'll be punished."<br>
+          "If I take space, I'll be rejected."<br>
+          "If I disappoint someone, I'm unsafe."
+        </div>
+        <p>Boundaries are not an external communication skill. They are an internal capacity skill. They live safely inside the structural framework of the body first, the vocal cords second, and the relationship third.</p>
+
+        <div class="interactive-card">
+          <div class="card-label">Somatic Reflection Tracker</div>
+          <div class="input-group">
+            <label class="input-label" for="input-intro-abandon">Which of the four survival statements above resonates most viscerally inside your chest right now?</label>
+            <textarea id="input-intro-abandon" rows="3" placeholder="Describe the physical configuration of your body when reading these lines..."></textarea>
+          </div>
+          <button class="btn" onclick="saveInput('input-intro-abandon', 'Introduction Self-Abandonment Profile')">Save and Track Profile</button>
+          <div id="local-log-intro" class="history-log"></div>
+        </div>
+      </section>
+
+      <section id="sect-ch1" class="content-section">
+        <div class="chapter-header">
+          <div>
+            <div class="chapter-meta">Part I: Awareness — The Student Perspective</div>
+            <h1>Chapter 1: Why Boundaries Feel Hard</h1>
+          </div>
+          <button class="btn btn-secondary" onclick="printTargetSection('sect-ch1', 'Chapter 1 Profile')">🖨️ Print Section</button>
+        </div>
+        <p>Your earliest environment taught you what emotions were safely allowed, what needs were acceptable, and what structural roles you had to maintain to optimize human connection alignment.</p>
+        
+        <h2 class="section-title">1.2 The Identity Fusion Pattern</h2>
+        <div style="text-align: center; margin: 30px 0;">
+          <svg width="400" height="220" viewBox="0 0 400 220">
+            <circle cx="160" cy="110" r="65" fill="none" stroke="#2A2A28" stroke-width="1.5" stroke-dasharray="4"/>
+            <circle cx="240" cy="110" r="65" fill="#D1A68F" fill-opacity="0.2" stroke="#D1A68F" stroke-width="2"/>
+            <text x="125" y="114" font-family="Inter" font-size="11" text-anchor="middle">Core Self</text>
+            <text x="275" y="114" font-family="Inter" font-size="11" text-anchor="middle">Fused Role</text>
+            <text x="200" y="114" font-family="Inter" font-size="10" font-style="italic" text-anchor="middle">Identity Fusion</text>
+          </svg>
+        </div>
+
+        <div class="interactive-card">
+          <div class="card-label">Interactive Assessment: Archetypal Role Identifier</div>
+          <div class="input-group">
+            <label class="input-label" for="select-role">Select your primary adaptive operational blueprint role:</label>
+            <select id="select-role">
+              <option value="The Caretaker">The Caretaker – Breath held, chest pushed forward</option>
+              <option value="The Peacekeeper">The Peacekeeper – Soft voice, collapsed spinal alignment</option>
+              <option value="The Achiever">The Achiever – Tight jaw articulation, hyper-forward leaning</option>
+              <option value="The Invisible One">The Invisible One – Shallow respiratory depth, minimal movement</option>
+              <option value="The Responsible One">The Responsible One – Rigid upper column, extreme shoulder tension</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label class="input-label" for="input-ch1-somatic">Detail when this physical posture manifests most frequently during systemic pressure updates:</label>
+            <textarea id="input-ch1-somatic" rows="3" placeholder="In what modern situations does this somatic profile take over your body automatically?"></textarea>
+          </div>
+          <button class="btn" onclick="saveMultiple(['select-role', 'input-ch1-somatic'], 'Chapter 1 Identity Fusion Tracking Profile')">Commit Archetype to Log</button>
+          <div id="local-log-ch1" class="history-log"></div>
+        </div>
+      </section>
+
+      <section id="sect-ch2" class="content-section">
+        <div class="chapter-header">
+          <div>
+            <div class="chapter-meta">Part I: Awareness — The Student Perspective</div>
+            <h1>Chapter 2: The Somatic Roots of "Yes" and "No"</h1>
+          </div>
+          <button class="btn btn-secondary" onclick="printTargetSection('sect-ch2', 'Chapter 2 Profile')">🖨️ Print Section</button>
+        </div>
+        <p>Your true organic system parameters communicate clean boundaries through spatial vectors long before your cognitive processing generates logical syntax profiles.</p>
+        
+        <div style="text-align: center; margin: 30px 0;">
+          <svg width="400" height="200" viewBox="0 0 400 200">
+            <line x1="200" y1="30" x2="200" y2="170" stroke="#2A2A28" stroke-width="1" stroke-dasharray="2"/>
+            <line x1="110" y1="100" x2="290" y2="100" stroke="#2A2A28" stroke-width="1" stroke-dasharray="2"/>
+            <circle cx="200" cy="100" r="6" fill="#8DA18D"/>
+            <text x="200" y="22" font-family="Inter" font-size="11" font-weight="bold" text-anchor="middle">PULL FORWARD → Yes</text>
+            <text x="200" y="185" font-family="Inter" font-size="11" font-weight="bold" text-anchor="middle">PULL BACK → No</text>
+            <text x="95" y="104" font-family="Inter" font-size="11" font-weight="bold" text-anchor="end">FREEZE Not safe</text>
+            <text x="305" y="104" font-family="Inter" font-size="11" font-weight="bold" text-anchor="start">FAWN → Survival yes</text>
+          </svg>
+        </div>
+
+        <div class="interactive-card">
+          <div class="card-label">Somatic Compass Baseline Calibrator</div>
+          <div class="input-group">
+            <label class="input-label" for="input-ch2-fawn">Describe a recent instance where your body signaled a clear 'PULL BACK' (No), but your voice executed a survival 'FAWN' (Yes):</label>
+            <textarea id="input-ch2-fawn" rows="3" placeholder="What did your throat, stomach, or chest feel like during that exact split second?"></textarea>
+          </div>
+          <button class="btn" onclick="saveInput('input-ch2-fawn', 'Chapter 2 Fawn Mapping Assessment')">Preserve Compass Trace</button>
+          <div id="local-log-ch2" class="history-log"></div>
+        </div>
+      </section>
+
+      <section id="sect-ch3" class="content-section">
+        <div class="chapter-header">
+          <div>
+            <div class="chapter-meta">Part I: Awareness — The Student Perspective</div>
+            <h1>Chapter 3: The Five Somatic Dimensions of Boundaries</h1>
+          </div>
+          <button class="btn btn-secondary" onclick="printTargetSection('sect-ch3', 'Chapter 3 Profile')">🖨️ Print Section</button>
+        </div>
+        <p>Boundaries operate along distinct operational tracks. Evaluating structural degradation across these individual layers prevents system crash errors.</p>
+
+        <div style="text-align: center; margin: 30px 0;">
+          <svg width="400" height="220" viewBox="0 0 400 220">
+            <polygon points="200,45 270,95 245,175 155,175 130,95" fill="none" stroke="#2A2A28" stroke-width="1.5"/>
+            <circle cx="200" cy="45" r="5" fill="#9A9B86"/>
+            <circle cx="270" cy="95" r="5" fill="#9A9B86"/>
+            <circle cx="245" cy="175" r="5" fill="#9A9B86"/>
+            <circle cx="155" cy="175" r="5" fill="#9A9B86"/>
+            <circle cx="130" cy="95" r="5" fill="#9A9B86"/>
+            <text x="200" y="32" font-family="Inter" font-size="11" font-weight="bold" text-anchor="middle">Physical</text>
+            <text x="282" y="98" font-family="Inter" font-size="11" font-weight="bold" text-anchor="start">Emotional</text>
+            <text x="255" y="190" font-family="Inter" font-size="11" font-weight="bold" text-anchor="start">Time</text>
+            <text x="145" y="190" font-family="Inter" font-size="11" font-weight="bold" text-anchor="end">Digital</text>
+            <text x="118" y="98" font-family="Inter" font-size="11" font-weight="bold" text-anchor="end">Relational</text>
+          </svg>
+        </div>
+
+        <div class="interactive-card">
+          <div class="card-label">Vulnerability Analysis Matrix</div>
+          <div class="input-group">
+            <label class="input-label" for="input-ch3-weakest">Which single vector currently experiences the highest volume of chronic intrusion vectors?</label>
+            <textarea id="input-ch3-weakest" rows="3" placeholder="Identify whether your core leakage occurs via time parameters, digital over-access, or emotional alignment..."></textarea>
+          </div>
+          <button class="btn" onclick="saveInput('input-ch3-weakest', 'Chapter 3 Vulnerability Track Target')">Index Weak Vector</button>
+          <div id="local-log-ch3" class="history-log"></div>
+        </div>
+      </section>
+
+      <section id="sect-ch4" class="content-section">
+        <div class="chapter-header">
+          <div>
+            <div class="chapter-meta">Part II: Structure — The Architect Perspective</div>
+            <h1>Chapter 4: The Boundary System</h1>
+          </div>
+          <button class="btn btn-secondary" onclick="printTargetSection('sect-ch4', 'Chapter 4 Profile')">🖨️ Print Section</button>
+        </div>
+        <p>Boundaries are not personality quirks. They are clear, repeatable systems that run on three fundamental systemic structural pillars.</p>
+
+        <table class="premium-table">
+          <thead>
+            <tr>
+              <th>Structural Pillar</th>
+              <th>Internal Functional Paradigm</th>
+              <th>System Error If Missing</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1. Clarity</strong></td>
+              <td>Accurately identifying your internal structural truth state.</td>
+              <td>Systemic Confusion &amp; Ambiguity</td>
+            </tr>
+            <tr>
+              <td><strong>2. Capacity</strong></td>
+              <td>Evaluating raw real-time nervous system tracking state limits.</td>
+              <td>Somatic Exhaustion &amp; Systemic Collapse</td>
+            </tr>
+            <tr>
+              <td><strong>3. Communication</strong></td>
+              <td>External clean execution profiles without regression.</td>
+              <td>Internalized Resentment Backlog</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="interactive-card">
+          <div class="card-label">Structural Balance Field Log</div>
+          <div class="input-group">
+            <label class="input-label" for="input-ch4-leak">When your system fails to integrate, do you trace the root source error to an initial failure of internal clarity or internal somatic capacity tracking?</label>
+            <textarea id="input-ch4-leak" rows="3" placeholder="Analyze whether you fail to recognize your limits, or simply override them during vocal delivery..."></textarea>
+          </div>
+          <button class="btn" onclick="saveInput('input-ch4-leak', 'Chapter 4 Core Architecture System Error Trace')">Record System Error Trace</button>
+          <div id="local-log-ch4" class="history-log"></div>
+        </div>
+      </section>
+
+      <section id="sect-ch5" class="content-section">
+        <div class="chapter-header">
+          <div>
+            <div class="chapter-meta">Part II: Structure — The Architect Perspective</div>
+            <h1>Chapter 5: The Somatic Boundary Audit</h1>
+          </div>
+          <button class="btn btn-secondary" onclick="printTargetSection('sect-ch5', 'Chapter 5 Alignment Tracking Data')">🖨️ Print Section</button>
+        </div>
+        <p>Calibrating your vector capacities dynamically ensures safe perimeter integration under intense load spikes. Use the live slider matrices below to map out your core data points in real time.</p>
+
+        <div class="interactive-card">
+          <div class="card-label">Live Radial Metric Calibrator (Scale 1-5)</div>
+          <div class="radar-grid">
+            <div class="radar-sliders">
+              <div class="slider-row">
+                <span class="slider-label">Physical</span>
+                <input type="range" id="rad-phys" min="1" max="5" value="3" oninput="updateRadarVisual()">
+                <span id="val-phys" class="slider-value">3</span>
+              </div>
+              <div class="slider-row">
+                <span class="slider-label">Emotional</span>
+                <input type="range" id="rad-emot" min="1" max="5" value="3" oninput="updateRadarVisual()">
+                <span id="val-emot" class="slider-value">3</span>
+              </div>
+              <div class="slider-row">
+                <span class="slider-label">Time</span>
+                <input type="range" id="rad-time" min="1" max="5" value="3" oninput="updateRadarVisual()">
+                <span id="val-time" class="slider-value">3</span>
+              </div>
+              <div class="slider-row">
+                <span class="slider-label">Digital</span>
+                <input type="range" id="rad-digi" min="1" max="5" value="3" oninput="updateRadarVisual()">
+                <span id="val-digi" class="slider-value">3</span>
+              </div>
+              <div class="slider-row">
+                <span class="slider-label">Relational</span>
+                <input type="range" id="rad-rel" min="1" max="5" value="3" oninput="updateRadarVisual()">
+                <span id="val-rel" class="slider-value">3</span>
+              </div>
+            </div>
+
+            <div style="text-align: center;">
+              <svg width="220" height="220" viewBox="0 0 220 220" style="background: var(--bg-muted); border-radius: 50%;">
+                <polygon points="110,30 180,80 155,160 65,160 40,80" fill="none" stroke="rgba(74,93,102,0.1)" stroke-width="1"/>
+                <polygon points="110,60 150,90 135,140 85,140 70,90" fill="none" stroke="rgba(74,93,102,0.1)" stroke-width="1"/>
+                <text x="110" y="20" font-family="Inter" font-size="8" text-anchor="middle">Phys</text>
+                <text x="195" y="85" font-family="Inter" font-size="8" text-anchor="start">Emot</text>
+                <text x="165" y="175" font-family="Inter" font-size="8" text-anchor="start">Time</text>
+                <text x="55" y="175" font-family="Inter" font-size="8" text-anchor="end">Digi</text>
+                <text x="25" y="85" font-family="Inter" font-size="8" text-anchor="end">Rel</text>
+                <polygon id="radar-poly" points="110,70 140,95 130,130 90,130 80,95" fill="rgba(154, 155, 134, 0.4)" stroke="var(--accent-sage)" stroke-width="1.5"/>
+              </svg>
+            </div>
+          </div>
+
+          <div style="margin-top:25px;">
+            <button class="btn" onclick="saveRadarWeights()">Log Radar Evaluation Matrix</button>
+          </div>
+          <div id="local-log-ch5" class="history-log"></div>
+        </div>
+      </section>
+
+      <section id="sect-ch6" class="content-section">
+        <div class="chapter-header">
+          <div>
+            <div class="chapter-meta">Part II: Structure — The Architect Perspective</div>
+            <h1>Chapter 6: The Somatic Boundary Ladder</h1>
+          </div>
+          <button class="btn btn-secondary" onclick="printTargetSection('sect-ch6', 'Chapter 6 Blueprint Scripts')">🖨️ Print Section</button>
+        </div>
+        <p>Deploying defensive parameters sequentially keeps your primary alignment protocols safe from reactive processing overflow loops.</p>
+        
+        <div class="quote-block" style="background-color: var(--bg-muted); border-left-color: var(--accent-sage);">
+          <strong>The Architecture Parameter Blueprint Formula:</strong><br>
+          <span style="font-size:1.2rem; color: var(--text-main); display:block; margin: 10px 0;">"I am not available for [Variable X]. I am fully available for [Variable Y]."</span>
+        </div>
+
+        <div class="interactive-card">
+          <div class="card-label">Boundary Formula Sandbox Tool</div>
+          <div class="input-group">
+            <label class="input-label" for="input-ch6-x">Identify structural boundary encroachment parameter (What you are NOT available for):</label>
+            <input type="text" id="input-ch6-x" placeholder="e.g., Answering unpaid tactical emails after 7:00 PM PST">
+          </div>
+          <div class="input-group">
+            <label class="input-label" for="input-ch6-y">Identify system alignment counter-offer parameter (What you ARE available for):</label>
+            <input type="text" id="input-ch6-y" placeholder="e.g., Addressing this priority at 9:00 AM standard operational block tomorrow">
+          </div>
+          <button class="btn" onclick="compileBoundaryFormula()">Synthesize Blueprint Statement</button>
+          
+          <div id="formula-output-box" style="display:none; margin-top:25px; padding:20px; background:var(--bg-muted); border-radius:6px; border-left:3px solid var(--accent-terracotta);">
+            <div class="card-label" style="color:var(--accent-terracotta);">Synthesized Vocal Delivery Formula Output:</div>
+            <p id="formula-target-text" style="font-size:1.15rem; font-style:italic; margin-bottom:0; font-weight:600;"></p>
+          </div>
+          <div id="local-log-ch6" class="history-log"></div>
+        </div>
+      </section>
+
+      <section id="sect-ch7" class="content-section">
+        <div class="chapter-header">
+          <div>
+            <div class="chapter-meta">Part III: Practice — The Teacher Perspective</div>
+            <h1>Chapter 7: The Somatic Boundary Voice</h1>
+          </div>
+          <button class="btn btn-secondary" onclick="printTargetSection('sect-ch7', 'Chapter 7 Vocal Profiler')">🖨️ Print Section</button>
+        </div>
+        <p>Your vocal delivery profile works directly as an explicit neurological frequency transmitter code. A clean, regulated vocal structure communicates safety directly.</p>
+
+        <div class="interactive-card">
+          <div class="card-label">Somatic Voice Configuration Log</div>
+          <div class="input-group">
+            <label class="input-label" for="input-ch7-tone">When delivering high-stakes boundaries, does your frequency register crack into defensive rigidity, or melt into apologetic placating patterns?</label>
+            <textarea id="input-ch7-tone" rows="3" placeholder="Observe the tension loops inside your tongue, throat, and vocal assembly points..."></textarea>
+          </div>
+          <button class="btn" onclick="saveInput('input-ch7-tone', 'Chapter 7 Vocal Profiler Tracking Log')">Log Vocal Parameters</button>
+          <div id="local-log-ch7" class="history-log"></div>
+        </div>
+      </section>
+
+      <section id="sect-ch8" class="content-section">
+        <div class="chapter-header">
+          <div>
+            <div class="chapter-meta">Part III: Practice — The Teacher Perspective</div>
+            <h1>Chapter 8: Real-Time Boundary Execution</h1>
+          </div>
+          <button class="btn btn-secondary" onclick="printTargetSection('sect-ch8', 'Chapter 8 Execution Strategy')">🖨️ Print Section</button>
+        </div>
+        <p>System perimeters must be executed clearly prior to arriving at maximum emotional spike thresholds.</p>
+
+        <div style="text-align: center; margin: 30px 0;">
+          <svg width="400" height="150" viewBox="0 0 400 150">
+            <path d="M 20 120 Q 120 120 170 40 T 270 120 Q 370 120 420 120" fill="none" stroke="#2A2A28" stroke-width="2"/>
+            <circle cx="170" cy="40" r="5" fill="#8DA18D"/>
+            <text x="30" y="140" font-family="Inter" font-size="9">Baseline</text>
+            <text x="120" y="90" font-family="Inter" font-size="9">Activation</text>
+            <text x="170" y="25" font-family="Inter" font-size="9" font-weight="bold" text-anchor="middle">Peak (Too Late)</text>
+            <text x="290" y="90" font-family="Inter" font-size="9">Deactivation</text>
+          </svg>
+        </div>
+
+        <div class="interactive-card">
+          <div class="card-label">Micro-Pause Practice Engine</div>
+          <p style="font-size: 0.95rem; margin-bottom: 1rem;">Before launching high-load boundary statements, install a hardware framework interface micro-pause:</p>
+          <div style="display:flex; gap:10px; flex-wrap:wrap; margin:20px 0; align-items: center;">
+            <span style="background:var(--bg-muted); border:1px solid var(--accent-sage); padding:6px 12px; border-radius:4px; font-size:0.85rem; font-weight:600;">Inhale</span>
+            <span style="color:var(--accent-terracotta);">➔</span>
+            <span style="background:var(--bg-muted); border:1px solid var(--accent-sage); padding:6px 12px; border-radius:4px; font-size:0.85rem; font-weight:600;">Drop Shoulders</span>
+            <span style="color:var(--accent-terracotta);">➔</span>
+            <span style="background:var(--bg-muted); border:1px solid var(--accent-sage); padding:6px 12px; border-radius:4px; font-size:0.85rem; font-weight:600;">Soften Focus</span>
+            <span style="color:var(--accent-terracotta);">➔</span>
+            <span style="background:var(--bg-muted); border:1px solid var(--accent-sage); padding:6px 12px; border-radius:4px; font-size:0.85rem; font-weight:600;">Exhale</span>
+            <span style="color:var(--accent-terracotta);">➔</span>
+            <span style="background:var(--bg-muted); border:1px solid var(--text-main); padding:6px 12px; border-radius:4px; font-size:0.85rem; font-weight:600;">Deliver</span>
+          </div>
+          <div class="input-group">
+            <label class="input-label" for="input-ch8-micro">Log your visceral operational tracking details when testing this intentional baseline system pause sequence:</label>
+            <textarea id="input-ch8-micro" rows="3" placeholder="Did installing an intentional delay clear out your default fawn impulse lines?"></textarea>
+          </div>
+          <button class="btn" onclick="saveInput('input-ch8-micro', 'Chapter 8 Micro-Pause Integration Log')">Index Integration Trace</button>
+          <div id="local-log-ch8" class="history-log"></div>
+        </div>
+      </section>
+
+      <section id="sect-ch9" class="content-section">
+        <div class="chapter-header">
+          <div>
+            <div class="chapter-meta">Part III: Practice — The Teacher Perspective</div>
+            <h1>Chapter 9: Pushback, Manipulation &amp; Guilt Trips</h1>
+          </div>
+          <button class="btn btn-secondary" onclick="printTargetSection('sect-ch9', 'Chapter 9 Pushback Matrices')">🖨️ Print Section</button>
+        </div>
+        <p>External elements frequently try to disrupt system architecture parameters to restore their preferred original extraction metrics.</p>
+
+        <div class="interactive-card">
+          <div class="card-label">Escalation Strategy Simulator</div>
+          <div class="input-group">
+            <label class="input-label" for="select-pushback">Select the active pushback profile configuration you encounter most frequently:</label>
+            <select id="select-pushback">
+              <option value="Minimizing">Minimizing – "You're taking this structure way too seriously."</option>
+              <option value="Guilt-Tripping">Guilt-Tripping – "After everything this network processed for you..."</option>
+              <option value="Anger/Threats">Anger/Threats – Intentionally triggering system validation loops via escalation.</option>
+              <option value="Victim-Playing">Victim-Playing – Re-routing focal metrics to establish their system as the injured node.</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label class="input-label" for="input-ch9-counter">Synthesize your clean, un-defensive escalation response sequence pattern here:</label>
+            <textarea id="input-ch9-counter" rows="3" placeholder="e.g., 'I recognize this new structure causes calibration issues for you, but the parameters remain solid.'"></textarea>
+          </div>
+          <button class="btn" onclick="saveMultiple(['select-pushback', 'input-ch9-counter'], 'Chapter 9 Pushback Counter-Measure Vector')">Commit Security Profile</button>
+          <div id="local-log-ch9" class="history-log"></div>
+        </div>
+      </section>
+
+      <section id="sect-ch10" class="content-section">
+        <div class="chapter-header">
+          <div>
+            <div class="chapter-meta">Part IV: Transmission — The System Cosmology</div>
+            <h1>Chapter 10: Modeling Boundaries</h1>
+          </div>
+          <button class="btn btn-secondary" onclick="printTargetSection('sect-ch10', 'Chapter 10 Live Systems')">🖨️ Print Section</button>
+        </div>
+        <p>Adjacent network nodes process structural parameters not from theoretical specifications, but from processing real-time system behavior.</p>
+
+        <div class="interactive-card">
+          <div class="card-label">Systemic Integrity Tracking Log</div>
+          <div class="input-group">
+            <label class="input-label" for="input-ch10-model">Where inside your relational architecture can you model a boundary implicitly through action, rather than relying on explicit verbal defense arrays?</label>
+            <textarea id="input-ch10-model" rows="3" placeholder="e.g., Powering down system link arrays cleanly at 6 PM without issuing an apologetic broadcast protocol..."></textarea>
+          </div>
+          <button class="btn" onclick="saveInput('input-ch10-model', 'Chapter 10 Somatic Modeling Profile')">Preserve Modeling Array</button>
+          <div id="local-log-ch10" class="history-log"></div>
+        </div>
+      </section>
+
+      <section id="sect-ch11" class="content-section">
+        <div class="chapter-header">
+          <div>
+            <div class="chapter-meta">Part IV: Transmission — The System Cosmology</div>
+            <h1>Chapter 11: Teaching Boundaries</h1>
+          </div>
+          <button class="btn btn-secondary" onclick="printTargetSection('sect-ch11', 'Chapter 11 Data Traces')">🖨️ Print Section</button>
+        </div>
+        <p>Guiding other system units to locate structural clarity requires allowing them to process their own regulatory friction profiles cleanly.</p>
+
+        <div class="interactive-card">
+          <div class="card-label">Over-Functioning Mitigation Audit</div>
+          <div class="input-group">
+            <label class="input-label" for="input-ch11-rescue">Identify where you currently exhibit over-functioning tracking errors:</label>
+            <textarea id="input-ch11-rescue" rows="3" placeholder="Who are you currently over-explaining your configurations to in order to bypass temporary system static friction?"></textarea>
+          </div>
+          <button class="btn" onclick="saveInput('input-ch11-rescue', 'Chapter 11 Over-Functioning Mitigation Metrics')">Index System Calibration Log</button>
+          <div id="local-log-ch11" class="history-log"></div>
+        </div>
+      </section>
+
+      <section id="sect-ch12" class="content-section">
+        <div class="chapter-header">
+          <div>
+            <div class="chapter-meta">Part IV: Transmission — The System Cosmology</div>
+            <h1>Chapter 12: Relational Boundary Culture</h1>
+          </div>
+          <button class="btn btn-secondary" onclick="printTargetSection('sect-ch12', 'Chapter 12 Structural Ledger')">🖨️ Print Section</button>
+        </div>
+        <p>True sustainable environment frameworks emerge when individual clarity matrices, conversational interface logic, and overarching relational protocols scale in perfect alignment harmony.</p>
+
+        <div style="text-align: center; margin: 30px 0;">
+          <svg width="340" height="160" viewBox="0 0 340 160">
+            <rect x="10" y="10" width="320" height="140" fill="none" stroke="#2A2A28" stroke-width="1"/>
+            <text x="20" y="26" font-family="Inter" font-size="9" font-weight="bold">3. Environmental Layer — Agreements &amp; Ecosystem</text>
+            <rect x="40" y="45" width="260" height="90" fill="none" stroke="#D1A68F" stroke-width="1.5"/>
+            <text x="50" y="61" font-family="Inter" font-size="9" font-weight="bold">2. Relational Layer — Interface Logic</text>
+            <rect x="70" y="80" width="200" height="45" fill="rgba(154, 155, 134, 0.1)" stroke="#2A2A28" stroke-width="1"/>
+            <text x="170" y="107" font-family="Inter" font-size="10" font-weight="bold" text-anchor="middle">1. Individual Layer — Core Clarity</text>
+          </svg>
+        </div>
+
+        <div class="interactive-card">
+          <div class="card-label">Ecosystem Alignment Blueprint Design</div>
+          <div class="input-group">
+            <label class="input-label" for="input-ch12-culture">What overarching collective rule or explicit baseline protocol could you propose to your family, core partnership, or corporate team node right now?</label>
+            <textarea id="input-ch12-culture" rows="3" placeholder="e.g., 'No asynchronous structural communication vectors requiring real-time feedback loops over standard weekend windows.'"></textarea>
+          </div>
+          <button class="btn" onclick="saveInput('input-ch12-culture', 'Chapter 12 Structural Environment Parameters')">Commit Architecture Parameters</button>
+          <div id="local-log-ch12" class="history-log"></div>
+        </div>
+      </section>
+
+      <section id="sect-ch13" class="content-section">
+        <div class="chapter-header">
+          <div>
+            <div class="chapter-meta">Part IV: Transmission — The System Cosmology</div>
+            <h1>Chapter 13: The Somatic Oath</h1>
+          </div>
+          <button class="btn btn-secondary" onclick="printTargetSection('sect-ch13', 'Sovereign Integration Oath Receipt')">🖨️ Print Section</button>
+        </div>
+        <p>This is your terminal system confirmation sequence. Seal your transformation loop by locking your somatic blueprint parameters down into active storage memory files below.</p>
+
+        <div style="text-align: center; margin: 40px 0;">
+          <svg width="120" height="120" viewBox="0 0 120 120">
+            <rect x="25" y="25" width="70" height="70" fill="none" stroke="#D1A68F" stroke-width="1.5" transform="rotate(45 60 60)"/>
+            <circle cx="60" cy="60" r="35" fill="none" stroke="#2A2A28" stroke-width="1"/>
+            <circle cx="60" cy="60" r="3" fill="#8DA18D"/>
+          </svg>
+        </div>
+
+        <div class="quote-block" style="font-size:1.15rem; line-height:1.8; text-align:center; padding:35px; border-left:none; border-top:2px solid var(--accent-sage); border-bottom:2px solid var(--accent-sage); background:var(--bg-surface);">
+          "I honor my body's truth. I protect my peace without guilt. I speak with clarity, kindness, and firmness. I repair when needed. I model what I teach. I build relationships rooted in respect. I lead through presence, not pressure. I transmit boundaries with integrity."
+        </div>
+
+        <div class="interactive-card" style="text-align: center;">
+          <div class="card-label">Execute Sovereign Authorization Sequence</div>
+          <div class="input-group" style="max-width:400px; margin: 0 auto 24px auto;">
+            <input type="text" id="input-oath-signature" placeholder="Type full name to verify system seal confirmation code" style="text-align:center;">
+          </div>
+          <button class="btn" onclick="executeSovereignOath()">Activate Sovereign Oath Verification</button>
+          <div id="oath-confirmation-receipt" style="display:none; margin-top:30px; color:var(--accent-sage); font-weight:bold; font-size:11pt;"></div>
+          <div id="local-log-ch13" class="history-log"></div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="bb-footer">
+    <div class="container bb-footer-inner">
+      <div class="bb-footer-graphic">
+        <img src="bb-workbook-footer.png" alt="Icons representing time, care, and choice">
+      </div>
+      <p class="bb-footer-text">
+        Part of the Vision:MB ecosystem for a growth‑balanced life:<br>
+        <a href="https://growthbalancedlife-cmd.github.io/boundary-blueprint-landing/" target="_blank" rel="noopener">Boundary Blueprint overview</a> · 
+        <a href="https://visionmb612.com" target="_blank" rel="noopener">Vision:MB Home</a> · 
+        <a href="https://growthbalancedlife-cmd.github.io/student-teacher-visionmb/" target="_blank" rel="noopener">The Student &amp; The Teacher</a> ·
+        <a href="https://growthbalancedlife-cmd.github.io/drop-kitchen-landing/" target="_blank" rel="noopener">The D.R.O.P Kitchen</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // System Configurations Mapping Component
+    const logMapConfig = {
+      'input-intro-abandon': 'local-log-intro',
+      'select-role': 'local-log-ch1',
+      'input-ch2-fawn': 'local-log-ch2',
+      'input-ch3-weakest': 'local-log-ch3',
+      'input-ch4-leak': 'local-log-ch4',
+      'rad-phys': 'local-log-ch5',
+      'input-ch6-x': 'local-log-ch6',
+      'input-ch7-tone': 'local-log-ch7',
+      'input-ch8-micro': 'local-log-ch8',
+      'select-pushback': 'local-log-ch9',
+      'input-ch10-model': 'local-log-ch10',
+      'input-ch11-rescue': 'local-log-ch11',
+      'input-ch12-culture': 'local-log-ch12',
+      'input-oath-signature': 'local-log-ch13'
+    };
+
+    window.addEventListener('DOMContentLoaded', () => {
+      initializeTheme();
+      initializeStorageLayers();
+      updateRadarVisual();
+      refreshAllLocalSectionLogs();
+      refreshDashboardHistoryView();
+      
+      // Global click outside listener to auto-close drop-down menu
+      document.addEventListener('click', (e) => {
+        const trigger = document.getElementById('dropdownTrigger');
+        const panel = document.getElementById('dropdownPanel');
+        if (panel.classList.contains('active') && !trigger.contains(e.target) && !panel.contains(e.target)) {
+          toggleChaptersMenu();
+        }
+      });
+    });
+
+    /* --- Theme Core System Architecture --- */
+    function initializeTheme() {
+      const savedTheme = localStorage.getItem('vmb_theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    }
+
+    function toggleTheme() {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('vmb_theme', newTheme);
+      generateUserFeedbackToast(`Switched to ${newTheme} mode execution`);
+    }
+
+    /* --- Multi-Chapter Navigation Module --- */
+    function toggleChaptersMenu() {
+      const panel = document.getElementById('dropdownPanel');
+      panel.classList.toggle('active');
+    }
+
+    function switchSection(targetSectionId) {
+      try {
+        const targetSectionNode = document.getElementById(`sect-${targetSectionId}`);
+        if (!targetSectionNode) return;
+
+        document.querySelectorAll('.content-section').forEach(section => section.classList.remove('active'));
+        document.querySelectorAll('.dropdown-item').forEach(link => link.classList.remove('active'));
+
+        targetSectionNode.classList.add('active');
+        const activeNavAnchor = document.querySelector(`.dropdown-item[data-target="${targetSectionId}"]`);
+        if (activeNavAnchor) activeNavAnchor.classList.add('active');
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        document.getElementById('dropdownPanel').classList.remove('active');
+      } catch (err) {
+        console.error("Navigation system exception caught: ", err);
+      }
+    }
+
+    /* --- Live Multi-Axis Metrics Calibrator Engine --- */
+    function updateRadarVisual() {
+      const getVal = (id) => parseInt(document.getElementById(id)?.value || 3);
+      const physicalVal = getVal('rad-phys');
+      const emotionalVal = getVal('rad-emot');
+      const timeVal = getVal('rad-time');
+      const digitalVal = getVal('rad-digi');
+      const relationalVal = getVal('rad-rel');
+
+      ['phys', 'emot', 'time', 'digi', 'rel'].forEach(key => {
+        const node = document.getElementById(`val-${key}`);
+        if (node) node.innerText = getVal(`rad-${key}`);
+      });
+
+      const computePointCoords = (angleInDegrees, rawRatingValue) => {
+        const scalingFactor = (rawRatingValue / 5) * 75;
+        const radiansConversion = (angleInDegrees * Math.PI) / 180;
+        return `${(110 + scalingFactor * Math.cos(radiansConversion)).toFixed(1)},${(110 + scalingFactor * Math.sin(radiansConversion)).toFixed(1)}`;
+      };
+
+      const polygonTargetNode = document.getElementById('radar-poly');
+      if (polygonTargetNode) {
+        polygonTargetNode.setAttribute('points', `
+          ${computePointCoords(-90, physicalVal)} 
+          ${computePointCoords(-18, emotionalVal)} 
+          ${computePointCoords(54, timeVal)} 
+          ${computePointCoords(126, digitalVal)} 
+          ${computePointCoords(198, relationalVal)}
+        `);
+      }
+    }
+
+    /* --- Data Record Processing Infrastructure --- */
+    function initializeStorageLayers() {
+      if (!localStorage.getItem('boundary_blueprint_records')) {
+        localStorage.setItem('boundary_blueprint_records', JSON.stringify([]));
+      }
+    }
+
+    function generateUserFeedbackToast(displayMessageText = "Reflections safely preserved to blueprint storage") {
+      const toastNode = document.getElementById('toast');
+      if (!toastNode) return;
+      toastNode.innerText = displayMessageText;
+      toastNode.classList.add('show');
+      setTimeout(() => toastNode.classList.remove('show'), 3500);
+    }
+
+    function commitLogToStorageMatrix(recordDataInstance) {
+      try {
+        const databaseArray = JSON.parse(localStorage.getItem('boundary_blueprint_records')) || [];
+        databaseArray.unshift(recordDataInstance);
+        localStorage.setItem('boundary_blueprint_records', JSON.stringify(databaseArray));
+        generateUserFeedbackToast();
+        refreshAllLocalSectionLogs();
+        refreshDashboardHistoryView();
+      } catch (storageError) {
+        console.error("Local storage allocation transaction failed:", storageError);
+      }
+    }
+
+    function saveInput(inputElementId, entryContextLabel) {
+      const inputFieldNode = document.getElementById(inputElementId);
+      if (!inputFieldNode || !inputFieldNode.value.trim()) {
+        generateUserFeedbackToast("Fulfillment error: Entry field empty.");
+        return;
+      }
+
+      const clientRecordObject = {
+        timestamp: new Date().toLocaleString(),
+        context: entryContextLabel,
+        primaryKey: inputElementId,
+        payload: [{ label: "Input Reflection Field Data Trace", value: inputFieldNode.value.trim() }]
+      };
+
+      commitLogToStorageMatrix(clientRecordObject);
+      inputFieldNode.value = '';
+    }
+
+    function saveMultiple(inputElementIdArray, entryContextLabel) {
+      const compiledPayloadArray = [];
+      let structuralValidationCheck = true;
+
+      inputElementIdArray.forEach(elementId => {
+        const innerElementNode = document.getElementById(elementId);
+        if (innerElementNode && innerElementNode.value.trim()) {
+          compiledPayloadArray.push({
+            label: elementId.includes('select') ? "Selected Structural Archetype Class" : "Contextual Narrative Strategy Input",
+            value: innerElementNode.value.trim()
+          });
+        } else {
+          structuralValidationCheck = false;
+        }
+      });
+
+      if (!structuralValidationCheck || compiledPayloadArray.length === 0) {
+        generateUserFeedbackToast("Validation failure: All fields require values.");
+        return;
+      }
+
+      const clientRecordObject = {
+        timestamp: new Date().toLocaleString(),
+        context: entryContextLabel,
+        primaryKey: inputElementIdArray[0],
+        payload: compiledPayloadArray
+      };
+
+      commitLogToStorageMatrix(clientRecordObject);
+      if (document.getElementById(inputElementIdArray[1])) document.getElementById(inputElementIdArray[1]).value = '';
+    }
+
+    function saveRadarWeights() {
+      const getVal = (id) => document.getElementById(id)?.value || "3";
+      const clientRecordObject = {
+        timestamp: new Date().toLocaleString(),
+        context: "Chapter 5 Live Somatic Radar Audit Matrix Profiles",
+        primaryKey: "rad-phys",
+        payload: [
+          { label: "Physical Vector Track Strength", value: getVal('rad-phys') },
+          { label: "Emotional Vector Track Strength", value: getVal('rad-emot') },
+          { label: "Time Vector Track Strength", value: getVal('rad-time') },
+          { label: "Digital Vector Track Strength", value: getVal('rad-digi') },
+          { label: "Relational Vector Track Strength", value: getVal('rad-rel') }
+        ]
+      };
+      commitLogToStorageMatrix(clientRecordObject);
+    }
+
+    function compileBoundaryFormula() {
+      const nodeX = document.getElementById('input-ch6-x');
+      const nodeY = document.getElementById('input-ch6-y');
+      const targetedXVal = nodeX ? nodeX.value.trim() : '';
+      const targetedYVal = nodeY ? nodeY.value.trim() : '';
+
+      if (!targetedXVal || !targetedYVal) {
+        generateUserFeedbackToast("Structural synthesis error: Both fields are required.");
+        return;
+      }
+
+      const formattedFormulaString = `"${targetedXVal}. Instead, I remain fully available for ${targetedYVal}."`;
+      document.getElementById('formula-target-text').innerText = formattedFormulaString;
+      document.getElementById('formula-output-box').style.display = 'block';
+
+      const clientRecordObject = {
+        timestamp: new Date().toLocaleString(),
+        context: "Chapter 6 Synthetic Structural Blueprint Formulations",
+        primaryKey: "input-ch6-x",
+        payload: [
+          { label: "Encroachment Exception Variable X", value: targetedXVal },
+          { label: "Structural Re-route Alternative Variable Y", value: targetedYVal },
+          { label: "Consolidated Vocal Script String", value: formattedFormulaString }
+        ]
+      };
+
+      commitLogToStorageMatrix(clientRecordObject);
+      if(nodeX) nodeX.value = '';
+      if(nodeY) nodeY.value = '';
+    }
+
+    function executeSovereignOath() {
+      const signatureInputNode = document.getElementById('input-oath-signature');
+      if (!signatureInputNode || !signatureInputNode.value.trim()) {
+        generateUserFeedbackToast("Sovereign execution error: Authorized seal name missing.");
+        return;
+      }
+
+      const verifiedSignatureText = signatureInputNode.value.trim();
+      const executionTimestamp = new Date().toLocaleString();
+
+      const clientRecordObject = {
+        timestamp: executionTimestamp,
+        context: "Terminal Chapter 13 Integration Sovereign Oath Execution System",
+        primaryKey: "input-oath-signature",
+        payload: [{ label: "Authorized Sovereign Signature Verified Code", value: verifiedSignatureText }]
+      };
+
+      commitLogToStorageMatrix(clientRecordObject);
+
+      const executionReceiptNode = document.getElementById('oath-confirmation-receipt');
+      executionReceiptNode.innerText = `Sovereign parameters safely sealed under confirmation block profile ${verifiedSignatureText} on ${executionTimestamp}. Blueprint active.`;
+      executionReceiptNode.style.display = 'block';
+      signatureInputNode.value = '';
+    }
+
+    /* --- History Sync Synchronizer Drivers --- */
+    function refreshAllLocalSectionLogs() {
+      const masterRecordsLog = JSON.parse(localStorage.getItem('boundary_blueprint_records')) || [];
+      Object.keys(logMapConfig).forEach(primaryInputId => {
+        const targetMountElementId = logMapConfig[primaryInputId];
+        const targetDomNode = document.getElementById(targetMountElementId);
+        
+        if (!targetDomNode) return;
+
+        const isolatedSectionEntries = masterRecordsLog.filter(record => record.primaryKey === primaryInputId);
+
+        if (isolatedSectionEntries.length === 0) {
+          targetDomNode.innerHTML = `<p style="font-style: italic; opacity:0.5; font-size:0.9rem;">No historical traces verified for this segment footprint.</p>`;
+          return;
+        }
+
+        let segmentHtmlAccumulator = `<div class="history-title">Section Entry History (Sorted Chronologically):</div>`;
+        isolatedSectionEntries.forEach(entry => {
+          segmentHtmlAccumulator += `
+            <div class="history-item">
+              <div class="history-date">🕒 Recorded Entry Lifecycle Step: ${entry.timestamp}</div>
+              <div style="margin-top:4px; line-height:1.5;">
+                ${entry.payload.map(p => `<strong>${p.label}:</strong> ${p.value}`).join('<br>')}
+              </div>
+            </div>
+          `;
+        });
+        targetDomNode.innerHTML = segmentHtmlAccumulator;
+      });
+    }
+
+    function refreshDashboardHistoryView() {
+      const applicationHistoryLogs = JSON.parse(localStorage.getItem('boundary_blueprint_records')) || [];
+      document.getElementById('stat-reflections').innerText = applicationHistoryLogs.length;
+
+      const radarHistoryItems = applicationHistoryLogs.filter(log => log.primaryKey === "rad-phys");
+      if (radarHistoryItems.length > 0) {
+        const latestRadarPayload = radarHistoryItems[0].payload;
+        let sum = 0;
+        latestRadarPayload.forEach(dataNode => sum += parseFloat(dataNode.value));
+        document.getElementById('stat-radar').innerText = `${(sum / latestRadarPayload.length).toFixed(2)} / 5`;
+      }
+
+      if (applicationHistoryLogs.some(log => log.primaryKey === "input-oath-signature")) {
+        const statOathNode = document.getElementById('stat-oath');
+        statOathNode.innerText = "Verified";
+        statOathNode.style.color = "var(--accent-sage)";
+      }
+
+      const historyDashboardMountNode = document.getElementById('dashboard-history-root');
+      if (applicationHistoryLogs.length === 0) {
+        historyDashboardMountNode.innerHTML = `<p style="font-style: italic; opacity: 0.6; text-align: center;">No stored habit logs or somatic input profiles located yet. Begin processing the reading tabs using the structural dropdown menu switcher.</p>`;
+        return;
+      }
+
+      let dashboardHtmlString = '';
+      applicationHistoryLogs.forEach(entryInstance => {
+        dashboardHtmlString += `
+          <div class="history-item">
+            <div class="history-date">Data Record Vector: ${entryInstance.timestamp} &mdash; Context: ${entryInstance.context}</div>
+            <div style="margin-top: 4px; line-height:1.5;">
+              ${entryInstance.payload.map(p => `<strong>${p.label}:</strong> ${p.value}`).join('<br>')}
+            </div>
+          </div>
+        `;
+      });
+      historyDashboardMountNode.innerHTML = dashboardHtmlString;
+    }
+
+    /* --- Printing Module Matrix Drivers --- */
+    function executeSandboxedPrint(htmlContentBody) {
+      const sandbox = document.getElementById('print-sandbox');
+      if (!sandbox) return;
+      sandbox.innerHTML = htmlContentBody;
+      window.print();
+      sandbox.innerHTML = '';
+    }
+
+    function printTargetSection(sectionElementId, cleanMetaTitleString) {
+      const referenceSectionNode = document.getElementById(sectionElementId);
+      if (!referenceSectionNode) return;
+
+      const titleElement = referenceSectionNode.querySelector('h1');
+      const sectionHeaderCopy = titleElement ? titleElement.outerHTML : `<h1>${cleanMetaTitleString}</h1>`;
+      const readingParagraphs = Array.from(referenceSectionNode.querySelectorAll('p, .quote-block, table, svg'))
+                                     .map(node => node.outerHTML).join('');
+                  
+      const targetInteractiveCard = referenceSectionNode.querySelector('.interactive-card');
+      let embeddedLogDataHtml = '';
+      if (targetInteractiveCard) {
+        const internalLogsTrace = targetInteractiveCard.querySelector('.history-log').innerHTML;
+        embeddedLogDataHtml = `
+          <div class="interactive-card" style="margin-top:40px; padding:30px; border:1px solid #2A2A28;">
+            <h3 style="margin-bottom:15px;">Active Workbook Historical Traces</h3>
+            ${internalLogsTrace}
+          </div>
+        `;
+      }
+
+      const compiledPrintTemplate = `
+        <div style="padding: 40px; color: #000;">
+          <div style="text-transform: uppercase; font-size: 8pt; letter-spacing: 2px; color: #666; margin-bottom: 10px;">The Boundary Blueprint — Section Report Archive</div>
+          <div style="border-bottom: 2px solid #000; padding-bottom: 15px; margin-bottom: 30px;">
+            ${sectionHeaderCopy}
+            <span style="font-size:10pt; font-style:italic; color:#444;">Target Generation Metric Profile: ${cleanMetaTitleString} — Extracted: ${new Date().toLocaleDateString()}</span>
+          </div>
+          ${readingParagraphs}
+          ${embeddedLogDataHtml}
+        </div>
+      `;
+      executeSandboxedPrint(compiledPrintTemplate);
+    }
+
+    function printEntireDataRecord() {
+      const allSavedLogsArray = JSON.parse(localStorage.getItem('boundary_blueprint_records')) || [];
+      let logRowsAccumulatorHtml = '';
+      
+      if (allSavedLogsArray.length === 0) {
+        logRowsAccumulatorHtml = `<p style="font-style:italic; color:#666; text-align:center;">No systemic profile records populated within this local client storage vault instance yet.</p>`;
+      } else {
+        allSavedLogsArray.forEach(log => {
+          logRowsAccumulatorHtml += `
+            <div class="history-item" style="margin-bottom:20px; padding:20px; border:1px solid #ccc; background:#fff; page-break-inside:avoid;">
+              <div class="history-date" style="font-size:9pt; color:#555; font-weight:bold; margin-bottom:6px; border-bottom:1px dashed #eee; padding-bottom:4px;">
+                TIMESTAMP: ${log.timestamp} &mdash; CONTEXT: ${log.context}
+              </div>
+              <div style="font-size:10.5pt; line-height:1.5;">
+                ${log.payload.map(p => `<strong>${p.label}:</strong> ${p.value}`).join('<br>')}
+              </div>
+            </div>
+          `;
+        });
+      }
+
+      const compiledMasterPrintTemplate = `
+        <div style="padding: 50px; color: #000; background:#fff;">
+          <div style="text-align:center; border-bottom: 3px double #000; padding-bottom: 25px; margin-bottom: 40px;">
+            <h1 style="font-size:30pt; margin-bottom:10px; font-weight:bold;">THE BOUNDARY BLUEPRINT</h1>
+            <h2 style="font-size:14pt; font-style:italic; font-weight:normal; margin-bottom:15px;">Sovereign Relational Profile &amp; Somatic Systems Record Logs</h2>
+            <span style="font-size:9pt; text-transform:uppercase; letter-spacing:1.5px; color:#555;">Complete Master Database Compilation File &mdash; Extracted: ${new Date().toLocaleString()}</span>
+          </div>
+          <p style="font-size:11pt; margin-bottom:40px; font-style:italic; text-align:center;">This official ledger preserves all targeted behavioral tracking vectors, dynamic radar weights, synthetic vocal scripts, and strategic somatic integration responses entered over your runtime lifecycle intervals.</p>
+          <h2 style="font-size:15pt; font-weight:bold; border-bottom:1px solid #000; padding-bottom:8px; margin-bottom:25px; color:#111;">Master Historical Ledgers Matrix Logs</h2>
+          ${logRowsAccumulatorHtml}
+        </div>
+      `;
+      executeSandboxedPrint(compiledMasterPrintTemplate);
+    }
+  </script>
+</body>
+</html>
