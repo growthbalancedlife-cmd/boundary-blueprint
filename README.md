@@ -1,2 +1,2 @@
-# boundary-blueprint
-The Boundary Blueprint — Digital product landing page. Boundary-setting framework for coaches, therapists &amp; creative entrepreneurs.
+# boundary-blueprint-companion
+The Boundary Blueprint — Digital product study guide page. Boundary-setting framework for coaches, therapists &amp; creative entrepreneurs.
